@@ -3,5 +3,5 @@
     <color name="LoginBackColor">#5000BCD4</color>
     <color name="LoginBackColor2">#50000000</color>
     <color name="MainColor">#00BCD4</color>
-
+    <color name="font_color">#FFFFFF</color>
 </resources>
