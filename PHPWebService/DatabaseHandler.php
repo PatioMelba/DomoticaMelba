@@ -9,13 +9,13 @@
 class DatabaseHandler
 {
     private $servername = "localhost";
-    private $username = "username";
-    private $password = "password";
+    private $username = "root";
+    private $password = "";
     private $DBH = null;
 
     public function __construct () {
         try {
-            $this->DBH = new PDO("mysql:host=$this->servername;dbname:patio_melba;", $this->username, $this->password);
+            $this->DBH = new PDO("mysql:host=$this->servername;dbname:'patio_melba';", $this->username, $this->password);
         } catch (PDOException $exception) {
             echo "Connection failed: " . $exception->getMessage();
         }
@@ -24,17 +24,41 @@ class DatabaseHandler
     public function addStreepje($userID, $amount) {
         if ($this->DBH != null) {
             try {
-                $statement = $this->DBH->prepare("INSERT INTO streeplijst (id, user_id,added_by, amount,date)
+                $this->DBH->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $statement = $this->DBH->prepare("INSERT INTO patio_melba.streeplijst (id, user_id,added_by, amount,date)
                                               VALUES (NULL, :userid, :userid, :amount, CURRENT_TIMESTAMP)");
                 $statement->bindParam(':userid', $userID);
                 $statement->bindParam(':amount', $amount);
 
                 $statement->execute();
+
+                echo "Succesfully Added.";
             } catch (PDOException $exception) {
                 echo "Failed to add streepjes: ".$exception->getMessage();
             }
         }
 
+    }
+
+    public function getStreepjes($userID) {
+        if ($this->DBH != null) {
+            try {
+                $this->DBH->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $statement = $this->DBH->prepare("SELECT SUM(amount) FROM patio_melba.streeplijst WHERE `user_id` = :userid");
+                $statement->bindParam(':userid', $userID);
+                $statement->execute();
+
+                $result = $statement->setFetchMode(PDO::FETCH_ASSOC);
+                $result = $statement->fetchColumn(0);
+
+                //typecheck?
+                return $result;
+
+                echo "Succesfully Added.";
+            } catch (PDOException $exception) {
+                echo "Failed to add streepjes: ".$exception->getMessage();
+            }
+        }
     }
 
 
