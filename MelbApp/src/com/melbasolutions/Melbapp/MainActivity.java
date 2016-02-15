@@ -3,6 +3,8 @@ package com.melbasolutions.Melbapp;
 import android.app.Activity;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.method.PasswordTransformationMethod;
+import android.widget.EditText;
 import android.widget.TextView;
 
 /**
@@ -17,5 +19,6 @@ public class MainActivity extends Activity {
         TextView txt = (TextView) findViewById(R.id.LoginTitle);
         Typeface CustomFont = Typeface.createFromAsset(getAssets(), "fonts/Montserrat-SemiBold.ttf");
         txt.setTypeface(CustomFont);
+
     }
 }

@@ -18,19 +18,21 @@
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="@string/app_name_login"
+            android:layout_marginTop="96dp"
             android:id="@+id/LoginTitle" android:layout_gravity="center_horizontal" android:textColor="#ffffff"
             android:textSize="102px" android:textAlignment="center"/>
-    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_gravity="bottom" android:paddingBottom="48dp" android:paddingLeft="24dp" android:paddingRight="24dp" android:orientation="vertical">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_gravity="bottom" android:paddingBottom="130dp" android:paddingLeft="24dp" android:paddingRight="24dp" android:orientation="vertical">
         <EditText
                 android:theme="@style/LoginStyle" android:layout_width="match_parent" android:layout_height="wrap_content"
                 android:hint="@string/username_placeholder"
                 android:textColor="#ffffff"
                 android:textColorHint="#ffffff"
+                android:fontFamily="sans-serif-light"
                 android:inputType="textPersonName"
                 android:ems="10"
-                android:id="@+id/editText2"
+                android:textSize="24dp"
+                android:id="@+id/username_input"
                 android:layout_gravity="left|center_vertical"/>
         <EditText
                 android:theme="@style/LoginStyle" android:layout_width="match_parent" android:layout_height="wrap_content"
@@ -39,17 +41,23 @@
                 android:textColorHint="#ffffff"
                 android:inputType="textPassword"
                 android:ems="10"
-                android:id="@+id/editText3" android:password="false"
+                android:fontFamily="sans-serif-light"
+                android:id="@+id/password_input" android:password="false"
                 android:focusable="false"
+                android:textSize="24dp"
+                android:layout_marginTop="12dp"
                 android:layout_gravity="left|bottom"/>
         <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/login_button"
-                android:textColor="@color/White"
+                android:textColor="@color/white"
                 android:id="@+id/button"
                 android:background="@color/MainColor"
-
+                android:textSize="24dp"
+                android:textAllCaps="false"
+                android:layout_marginTop="24dp"
+                android:fontFamily="sans-serif-light"
         />
 
     </LinearLayout>
