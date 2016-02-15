@@ -14,8 +14,8 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        TextView txt = (TextView) findViewById(R.id.title);
-        Typeface CustomFont = Typeface.createFromAsset(getAssets(), "fonts/Montserrat-Bold.ttf");
+        TextView txt = (TextView) findViewById(R.id.LoginTitle);
+        Typeface CustomFont = Typeface.createFromAsset(getAssets(), "fonts/Montserrat-SemiBold.ttf");
         txt.setTypeface(CustomFont);
     }
 }
