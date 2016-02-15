@@ -1,7 +1,9 @@
 package com.melbasolutions.Melbapp;
 
 import android.app.Activity;
+import android.graphics.Typeface;
 import android.os.Bundle;
+import android.widget.TextView;
 
 /**
  * Created by Boris & Pim on 2/15/2016.
@@ -11,5 +13,9 @@ public class MainActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        TextView txt = (TextView) findViewById(R.id.title);
+        Typeface CustomFont = Typeface.createFromAsset(getAssets(), "fonts/Montserrat-Bold.ttf");
+        txt.setTypeface(CustomFont);
     }
 }

@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Patio Melba</string>
+    <string name="app_name_login">melba.</string>
+    <string name="username_placeholder">User Name</string>
+    <string name="password_placeholder">Password</string>
 </resources>
