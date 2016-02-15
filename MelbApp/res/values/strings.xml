@@ -4,4 +4,5 @@
     <string name="app_name_login">melba.</string>
     <string name="username_placeholder">User Name</string>
     <string name="password_placeholder">Password</string>
+    <string name="login_button">Login</string>
 </resources>
