@@ -8,7 +8,7 @@
     </style>
 
 
-    <style name="AppTheme.Base" parent="android:Theme.Material.Light.NoActionBar">
+    <style name="AppTheme.Base" parent="android:Theme.Material.Light">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/MainColor</item>
         <!-- Light Indigo -->
