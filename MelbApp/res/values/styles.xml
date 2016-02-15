@@ -5,4 +5,8 @@
         <item name="colorControlNormal">#ff0000</item>
         <!-- colorControlActivated & colorControlHighlight use the colorAccent color by default -->
     </style>
+
+    <style>
+        <item name="android:colorPrimary">@color/boris_color</item>
+    </style>
 </resources>
