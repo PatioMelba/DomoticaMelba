@@ -19,6 +19,5 @@ public class MainActivity extends Activity {
         TextView txt = (TextView) findViewById(R.id.LoginTitle);
         Typeface CustomFont = Typeface.createFromAsset(getAssets(), "fonts/Montserrat-SemiBold.ttf");
         txt.setTypeface(CustomFont);
-
     }
 }

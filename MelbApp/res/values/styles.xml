@@ -7,6 +7,10 @@
         <!-- colorControlActivated & colorControlHighlight use the colorAccent color by default -->
     </style>
 
+    <style name="ActivityStyle" parent="@android:style/Theme.Material.Light">
+
+    </style>
+
     <style name="BorisStyle" parent="android:Theme.Material.Light">
         <item name="android:colorPrimary">@color/MainColor</item>
         <item name="android:titleTextColor">@color/white</item>
