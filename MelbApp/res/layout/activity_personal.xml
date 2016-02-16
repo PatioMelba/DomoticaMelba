@@ -1,23 +1,202 @@
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                                 xmlns:app="http://schemas.android.com/apk/res-auto"
-                                                 android:layout_width="match_parent"
-                                                 android:layout_height="match_parent">
-    <android.support.design.widget.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
-        <android.support.v7.widget.Toolbar
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:orientation="vertical"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="731dp" android:layout_gravity="top" android:paddingTop="24dp" android:paddingLeft="24dp" android:paddingRight="24dp" android:orientation="vertical">
+        <TextView
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="@string/personal_title_1"
+                android:textColor="@color/titles"
+                android:fontFamily="sans-serif"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:textSize="18dp"
+                android:paddingTop="24dp"
+                android:paddingBottom="24dp"
+                android:id="@+id/personal_title_1" />
+        <Button
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="?attr/colorPrimary"
-                app:layout_scrollFlags="scroll|enterAlways"
-                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-        <android.support.design.widget.TabLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-    </android.support.design.widget.AppBarLayout>
-    <android.support.v4.view.ViewPager
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-</android.support.design.widget.CoordinatorLayout>
+                android:layout_height="wrap_content"
+                android:text="@string/personal_stripe_beer"
+                android:textColor="@color/white"
+                android:id="@+id/button"
+                android:background="@color/MainColor"
+                android:textSize="18dp"
+                android:textAllCaps="false"
+                android:fontFamily="sans-serif-light"
+        />
+
+        <TextView
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="@string/personal_title_2"
+                android:layout_marginTop="24dp"
+                android:textColor="@color/titles"
+                android:fontFamily="sans-serif"
+                android:inputType="textPersonName"
+                android:paddingTop="12dp"
+                android:paddingBottom="24dp"
+                android:ems="10"
+                android:textSize="18dp"
+                android:id="@+id/personal_title_2" />
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_gravity="top">
+
+             <TextView
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/personal_stats_1"
+                    android:textColor="@color/text"
+                    android:fontFamily="sans-serif"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:paddingBottom="6dp"
+                    android:textSize="18dp"
+                    android:layout_gravity="left"
+                    android:id="@+id/personal_stats_1" />
+            <TextView
+                    android:layout_width="fill_parent" android:layout_height="wrap_content"
+                    android:text="32"
+                    android:textColor="@color/MainColor"
+                    android:fontFamily="sans-serif"
+                    android:textSize="18dp"
+                    android:paddingBottom="0dp"
+                    android:gravity="right"
+                    android:id="@+id/personal_stats_2_number"/>
+
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_gravity="top">
+            <TextView
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/personal_stats_2"
+                    android:textColor="@color/text"
+                    android:fontFamily="sans-serif"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:textSize="18dp"
+                    android:paddingBottom="6dp"
+                    android:id="@+id/personal_stats_2" />
+            <TextView
+                    android:layout_width="fill_parent" android:layout_height="wrap_content"
+                    android:text="213"
+                    android:textColor="@color/MainColor"
+                    android:fontFamily="sans-serif"
+                    android:textSize="18dp"
+                    android:paddingBottom="0dp"
+                    android:gravity="right"
+                    android:id="@+id/personal_stats_2_number" />
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_gravity="top">
+            <TextView
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/personal_stats_3"
+                    android:textColor="@color/text"
+                    android:fontFamily="sans-serif"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:textSize="18dp"
+                    android:paddingBottom="6dp"
+                    android:id="@+id/personal_stats_3" />
+            <TextView
+                    android:layout_width="fill_parent" android:layout_height="wrap_content"
+                    android:text="€ 0,56"
+                    android:textColor="@color/MainColor"
+                    android:fontFamily="sans-serif"
+                    android:textSize="18dp"
+                    android:paddingBottom="0dp"
+                    android:gravity="right"
+                    android:id="@+id/personal_stats_2_number" />
+        </LinearLayout>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_gravity="top">
+            <TextView
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="@string/personal_stats_4"
+                    android:textColor="@color/text"
+                    android:fontFamily="sans-serif"
+                    android:inputType="textPersonName"
+                    android:ems="10"
+                    android:textSize="18dp"
+                    android:paddingBottom="6dp"
+                    android:id="@+id/personal_stats_4" />
+            <TextView
+                    android:layout_width="fill_parent" android:layout_height="wrap_content"
+                    android:text="€ 76,72"
+                    android:textColor="@color/MainColor"
+                    android:fontFamily="sans-serif"
+                    android:textSize="18dp"
+                    android:paddingBottom="0dp"
+                    android:gravity="right"
+                    android:id="@+id/personal_stats_2_number" />
+        </LinearLayout>
+        <TextView
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:text="@string/personal_title_3"
+                android:textColor="@color/titles"
+                android:fontFamily="sans-serif"
+                android:ems="10"
+                android:textSize="18dp"
+                android:paddingTop="24dp"
+                android:paddingBottom="24dp"
+                android:id="@+id/personal_title_3" />
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="vertical">
+            <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:paddingBottom="12dp">
+                <Button
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Last 7 days"
+                        android:textColor="@color/white"
+                        android:id="@+id/button_person_1"
+                        android:background="@color/MainColor"
+                        android:textSize="18dp"
+                        android:layout_gravity="left"
+                        android:textAllCaps="false"
+                        android:layout_marginRight="2dp"
+                        android:fontFamily="sans-serif-light"
+                />
+                <Button
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Last month"
+                        android:textColor="@color/white"
+                        android:id="@+id/button_person_1"
+                        android:background="@color/MainColor"
+                        android:textSize="18dp"
+                        android:layout_gravity="right"
+                        android:textAllCaps="false"
+                        android:fontFamily="sans-serif-light"
+                        android:layout_marginLeft="2dp"
+                />
+            </LinearLayout>
+            <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:paddingBottom="12dp">
+                <Button
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Last year"
+                        android:textColor="@color/white"
+                        android:id="@+id/button_person_1"
+                        android:background="@color/MainColor"
+                        android:textSize="18dp"
+                        android:layout_gravity="left"
+                        android:textAllCaps="false"
+                        android:layout_marginRight="2dp"
+                        android:fontFamily="sans-serif-light"
+                />
+                <Button
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="All time"
+                        android:textColor="@color/white"
+                        android:id="@+id/button_person_1"
+                        android:background="@color/MainColor"
+                        android:textSize="18dp"
+                        android:layout_gravity="right"
+                        android:textAllCaps="false"
+                        android:fontFamily="sans-serif-light"
+                        android:layout_marginLeft="2dp"
+                />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>
