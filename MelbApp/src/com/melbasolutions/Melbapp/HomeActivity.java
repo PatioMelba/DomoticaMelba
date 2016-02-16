@@ -1,6 +1,8 @@
 package com.melbasolutions.Melbapp;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -19,10 +21,16 @@ import java.net.URL;
 public class HomeActivity extends Activity {
 
     private URL url;
+    private SharedPreferences prefs;
+    private int userId;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Setup preferences for user id.
+        prefs = getSharedPreferences(getString(R.string.pref_pref_name), Context.MODE_PRIVATE);
+        userId = prefs.getInt(getString(R.string.pref_user_id),-1);
 
         //set URL of webservice
         try {
@@ -34,12 +42,12 @@ public class HomeActivity extends Activity {
         setContentView(R.layout.home_fragment);
 
         Button button = (Button) findViewById(R.id.add_streepje);
-
+        button.setText("Add 1 bier voor user" + userId);
         button.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                    addStreepje(1);
+                    addStreepje(userId);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -50,7 +58,7 @@ public class HomeActivity extends Activity {
     public void addStreepje(int userID) throws IOException {
         url = new URL("http://10.0.2.2:80/MelbaApp/MelbaService.php?do=addStreepje&user=" + userID + "&amount=1");
 
-        new HttpRequestHandler(this).execute(url);
+        new HttpRequestHandler(this, Enums.CommandTypes.STREEP).execute(url);
 
 
     }

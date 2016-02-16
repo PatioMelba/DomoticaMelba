@@ -60,6 +60,25 @@ class DatabaseHandler
             }
         }
     }
+    public function login($user, $password) {
+        if ($this->DBH != null) {
+            try {
+                $this->DBH->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                $statement = $this->DBH->prepare("SELECT * FROM patio_melba.users WHERE name = :userid AND password = :password");
+                $statement->bindParam(':userid', $user);
+                $statement->bindParam(':password', $password);
+                $statement->execute();
+
+                if ($statement->rowCount() == 1) {
+                    return $statement->fetchColumn(0);
+                } else {
+                    return false;
+                }
+            } catch (PDOException $exception) {
+                echo $exception->getMessage();
+            }
+        }
+    }
 
 
 

@@ -1,5 +1,5 @@
 <?php
-header("Content-type: text/xml");
+header("Content-type: text/json");
 require_once ("DatabaseHandler.php");
 /**
  * Created by PhpStorm.
@@ -16,7 +16,7 @@ if (isset($_GET['do'])) {
 
 //database handler object.
 $databaseHandler = new DatabaseHandler();
-echo "<data>";
+//echo "<data>";
 if (isset($postData)) {
     switch($postData) {
         case "addStreepje":
@@ -37,9 +37,20 @@ if (isset($postData)) {
             }
             break;
 
+        case "login":
+            if (isset($_GET['user']) && isset($_GET['pass'])) {
+                $result = $databaseHandler->login($_GET['user'],$_GET['pass']);
+                if (is_numeric($result)) {
+                    echo "succes:".$result;
+                } else {
+                    echo "Invalid login";
+                }
+
+            }
+            break;
     }
 }
 
-echo "</data>";
+//echo "</data>";
 
 ?>
