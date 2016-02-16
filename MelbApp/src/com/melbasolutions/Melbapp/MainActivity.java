@@ -19,7 +19,6 @@ public class MainActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         //Create shared prefs.
         prefs = getSharedPreferences(getString(R.string.pref_pref_name), Context.MODE_PRIVATE);
         prefs.edit().clear().commit();

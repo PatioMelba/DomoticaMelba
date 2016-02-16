@@ -11,10 +11,14 @@
             android:background="@color/MainColor"
             android:layout_gravity="bottom"
             android:layout_alignParentBottom="true" android:layout_marginBottom="64dp">
+
         <Button
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="Add Beer Boris"
                 android:id="@+id/add_streepje"/>
     </LinearLayout>
+
+    <android.sup
+
 </RelativeLayout>
