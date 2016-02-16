@@ -5,4 +5,15 @@
     <string name="username_placeholder">User Name</string>
     <string name="password_placeholder">Password</string>
     <string name="login_button">Login</string>
+
+    <string name="personal_title_1">Stripe your beer</string>
+    <string name="personal_title_2">Personal Statistics</string>
+    <string name="personal_title_3">Show stripe history</string>
+    <string name="general_title_1">Stripe for someone else</string>
+    <string name="general_title_2">General statistics</string>
+    <string name="personal_stripe_beer">Stripe 1 beer!</string>
+    <string name="personal_stats_1">Beer drunk this week:</string>
+    <string name="personal_stats_2">Total beer drunk:</string>
+    <string name="personal_stats_3">Average price per beer:</string>
+    <string name="personal_stats_4">Beer drunk in moneys:</string>
 </resources>

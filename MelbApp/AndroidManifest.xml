@@ -4,7 +4,7 @@
     <uses-sdk android:minSdkVersion="23"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <application android:icon="@drawable/icon" android:label="@string/app_name"
-                android:theme="@style/BorisStyle">
+                 android:theme="@style/BorisStyle">
         <activity android:name=".MainActivity"
                   android:theme="@android:style/Theme.Material.Light.NoActionBar.Fullscreen"/>
         <activity android:name=".HomeActivity"/>
