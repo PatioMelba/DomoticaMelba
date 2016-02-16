@@ -7,18 +7,6 @@
         <!-- colorControlActivated & colorControlHighlight use the colorAccent color by default -->
     </style>
 
-
-    <style name="AppTheme.Base" parent="android:Theme.Material.Light">
-        <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/MainColor</item>
-        <!-- Light Indigo -->
-        <item name="colorPrimaryDark">#3949AB</item>
-        <!-- Dark Indigo -->
-        <item name="colorAccent">@color/MainColor</item>
-        <!-- Blue -->
-    </style>
-    <style name="AppTheme" parent="AppTheme.Base"></style>
-
     <style name="BorisStyle" parent="android:Theme.Material.Light">
         <item name="android:colorPrimary">@color/MainColor</item>
         <item name="android:titleTextColor">@color/white</item>
