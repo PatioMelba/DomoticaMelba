@@ -30,24 +30,20 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="module" module-name="android-support-v7-appcompat" exported="" />
+    <orderEntry type="module" module-name="android-support-v7-gridlayout" exported="" />
+    <orderEntry type="module" module-name="android-support-v7-mediarouter" exported="" />
+    <orderEntry type="module" module-name="android-support-v7-palette" exported="" />
+    <orderEntry type="module" module-name="v4" exported="" />
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://C:/Program Files/Android/extras/android/support/v7/appcompat/libs/android-support-v4.jar!/" />
+          <root url="file://F:/Programs/Android SDK/extras/android/support/v7/appcompat/libs" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
+        <jarDirectory url="file://F:/Programs/Android SDK/extras/android/support/v7/appcompat/libs" recursive="false" />
       </library>
     </orderEntry>
-    <orderEntry type="module-library" exported="">
-      <library>
-        <CLASSES>
-          <root url="jar://C:/Program Files/Android/extras/android/support/v7/appcompat/libs/android-support-v7-appcompat.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
-    <orderEntry type="library" name="android-23" level="project" />
   </component>
 </module>
