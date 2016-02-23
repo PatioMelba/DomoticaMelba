@@ -1,10 +1,13 @@
 package httpHandlers;
 
 import android.app.Activity;
+import android.database.sqlite.SQLiteDatabase;
 import com.melbasolutions.melbapp.main.HomeActivity;
 import com.melbasolutions.melbapp.main.R;
 import org.json.JSONException;
 import org.json.JSONObject;
+import sqlite.DatabaseUpdater;
+
 import java.io.IOException;
 import java.net.URL;
 
@@ -22,7 +25,6 @@ public class StatsHandler extends BasicHttpHandler {
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
-
     }
 
     @Override
@@ -35,7 +37,6 @@ public class StatsHandler extends BasicHttpHandler {
             while((line = in.readLine()) != null) {
                 sb.append(line);
             }
-
             String t = sb.toString();
 
             //returns the string a Json object can be created from.

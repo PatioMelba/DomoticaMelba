@@ -59,6 +59,18 @@ if (isset($postData)) {
                 }
             }
             break;
+        case "syncStreepjes":
+            if (isset($_GET['date'])) {
+                $date = str_replace("."," ",$_GET['date']);
+                $result = $databaseHandler->getStreepjesFrom($date);
+                if (isset($result) && $result !="") {
+                    //print_r($result);
+                    echo json_encode($result);
+                } else {
+                    echo "Probably Wrong Date Format: ".$_GET['date'];
+                }
+            }
+            break;
     }
 }
 

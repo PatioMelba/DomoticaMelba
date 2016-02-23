@@ -148,6 +148,25 @@ class DatabaseHandler
         }
     }
 
+    public function getStreepjesFrom($fromDate) {
+        if ($this->DBH != null) {
+            try {
+                $this->DBH->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                //TODO: fix date time converter check.
+                $statement = $this->DBH->prepare("SELECT * FROM patio_melba.streeplijst WHERE date > '".$fromDate."'");
+                $statement->setFetchMode(PDO::FETCH_ASSOC);
+                $statement->execute();
+                if ($statement->rowCount() > 0) {
+                    return $statement->fetchAll();
+                } else {
+                    return "No results.";
+                }
+            } catch (PDOException $exception) {
+                echo $exception->getMessage();
+            }
+        }
+    }
+
 
 
 }

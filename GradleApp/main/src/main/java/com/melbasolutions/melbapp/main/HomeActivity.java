@@ -31,14 +31,9 @@ import java.net.URL;
  */
 public class HomeActivity extends AppCompatActivity {
 
-    private FragmentTabHost fragmentTabHost;
-
-    private URL url;
     private SharedPreferences prefs;
     private int userId;
-
     private DatabaseHelper databaseHelper;
-    private String[] personalStats;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -86,6 +81,8 @@ public class HomeActivity extends AppCompatActivity {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
+
+
     }
 
     public void addStreepje() throws IOException {
@@ -104,10 +101,6 @@ public class HomeActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.stats_personal_beer_week)).setText("" + amount);
         ((TextView) findViewById(R.id.stats_personal_beer_cost_total)).setText(String.format("%.2f",userBeerPrice));
         ((TextView) findViewById(R.id.stats_personal_beer_total)).setText("" + total);
-    }
-    //makes sure data gets set from the ASyncTask.
-    public void setPersonalStats(String[] params) {
-        personalStats = params;
     }
 
     public void updateTextViews(JSONObject json) {

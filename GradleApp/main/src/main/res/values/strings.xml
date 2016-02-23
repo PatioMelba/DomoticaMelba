@@ -22,8 +22,9 @@
     <string name="personal_stats_4">Beer drunk in moneys:</string>
 
     <string name="pref_logged_in_before">com.melbasolutions.melbaapp.PREFERENCE_LOGGED_IN_BEFORE</string>
-    <string name="pref_pref_name">com.melbasolutions.melbaap.PREFERENCE_NAME</string>
-    <string name="pref_user_id">com.melbasolutions.melbaap.USER_ID</string>
+    <string name="pref_pref_name">com.melbasolutions.melbaapp.PREFERENCE_NAME</string>
+    <string name="pref_user_id">com.melbasolutions.melbaapp.USER_ID</string>
+    <string name="pref_last_updated">com.melbasolutions.melbaapp.LAST_UPDATED</string>
 
     <string name="webservice_location">http://elborio.student.utwente.nl:80/MelbaApp/MelbaService.php</string>
     <string name="webservice_location_emulator">http://10.0.2.2:80/MelbaApp/MelbaService.php</string>
