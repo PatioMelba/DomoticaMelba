@@ -1,4 +1,4 @@
-package com.melbasolutions.Melbapp;
+package com.melbasolutions.melbapp.main;
 
 import android.app.Activity;
 import android.content.Context;
@@ -21,7 +21,13 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_login);
         //Create shared prefs.
         prefs = getSharedPreferences(getString(R.string.pref_pref_name), Context.MODE_PRIVATE);
-        //prefs.edit().clear().commit();
+
+
+
+        prefs.edit().clear().commit();
+
+
+
         boolean loggedInBefore = prefs.getBoolean(getString(R.string.pref_logged_in_before), false);
 
         if (loggedInBefore) {
@@ -36,8 +42,8 @@ public class MainActivity extends Activity {
         }
 
 
-        TextView txt = (TextView) findViewById(R.id.LoginTitle);
-        Typeface CustomFont = Typeface.createFromAsset(getAssets(), "fonts/Montserrat-SemiBold.ttf");
-        txt.setTypeface(CustomFont);
+        //TextView txt = (TextView) findViewById(R.id.LoginTitle);
+        //Typeface CustomFont = Typeface.createFromAsset(getAssets(), "fonts/Montserrat-SemiBold.ttf");
+        //txt.setTypeface(CustomFont);
     }
 }

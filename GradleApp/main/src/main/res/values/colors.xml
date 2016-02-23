@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="LoginBackColor">#5000BCD4</color>
+    <color name="LoginBackColor2">#50000000</color>
+    <color name="MainColor">#00BCD4</color>
+    <color name="ColorPrimary">#00BCD4</color>
+    <color name="ColorPrimaryDark">#0096A9</color>
+    <color name="color_accent">#FF0068</color>
+    <color name="secondcolor">#0096A9</color>
+    <color name="white">#ffffff</color>
+    <color name="titles">#BBBBBB</color>
+    <color name="text">#4A4A4A</color>
+
+</resources>

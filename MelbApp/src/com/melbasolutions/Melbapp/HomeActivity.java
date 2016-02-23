@@ -4,13 +4,15 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTabHost;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.Toast;
+
 
 import java.io.*;
-import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -18,7 +20,9 @@ import java.net.URL;
 /**
  * Created by Boris on 2/15/2016.
  */
-public class HomeActivity extends Activity {
+public class HomeActivity extends FragmentActivity {
+
+    private FragmentTabHost fragmentTabHost;
 
     private URL url;
     private SharedPreferences prefs;
@@ -27,6 +31,11 @@ public class HomeActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_home);
+        TabLayout tabLayout = new TabLayout(getBaseContext());
+        tabLayout.addTab(tabLayout.newTab().setText("Personal"));
+        tabLayout.addTab(tabLayout.newTab().setText("Everyone"));
 
         //Setup preferences for user id.
         prefs = getSharedPreferences(getString(R.string.pref_pref_name), Context.MODE_PRIVATE);
@@ -39,7 +48,7 @@ public class HomeActivity extends Activity {
             e.printStackTrace();
         }
 
-        setContentView(R.layout.home_fragment);
+
 
         Button button = (Button) findViewById(R.id.add_streepje);
         button.setText("Add 1 bier voor user" + userId);

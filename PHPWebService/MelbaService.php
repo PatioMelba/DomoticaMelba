@@ -1,5 +1,5 @@
 <?php
-header("Content-type: text/json");
+header('Content-Type: application/json');
 require_once ("DatabaseHandler.php");
 /**
  * Created by PhpStorm.
@@ -41,11 +41,22 @@ if (isset($postData)) {
             if (isset($_GET['user']) && isset($_GET['pass'])) {
                 $result = $databaseHandler->login($_GET['user'],$_GET['pass']);
                 if (is_numeric($result)) {
-                    echo "succes:".$result;
+                    echo "succes:".$result ."\n";
                 } else {
                     echo "Invalid login";
                 }
+            }
+            break;
 
+        case "getstats":
+            if (isset($_GET['user'])) {
+                $result = $databaseHandler->getStats($_GET['user']);
+                if (isset($result) && $result !="") {
+                    //print_r($result);
+                    echo json_encode($result);
+                } else {
+                    echo "Invalid login";
+                }
             }
             break;
     }
