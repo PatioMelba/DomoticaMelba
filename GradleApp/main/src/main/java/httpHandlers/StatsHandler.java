@@ -32,8 +32,12 @@ public class StatsHandler extends BasicHttpHandler {
         super.doInBackground(params);
         StringBuilder sb = new StringBuilder();
 
-        String line;
+        //early breakout if no input stream is found.
+        if (in == null) {
+            return "No inputstream found.";
+        }
         try {
+            String line;
             while((line = in.readLine()) != null) {
                 sb.append(line);
             }

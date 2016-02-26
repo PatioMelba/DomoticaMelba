@@ -25,7 +25,7 @@ class DatabaseHandler
         if ($this->DBH != null) {
             try {
                 $this->DBH->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $statement = $this->DBH->prepare("INSERT INTO patio_melba.streeplijst (id, user_id,added_by, amount,date)
+                $statement = $this->DBH->prepare("INSERT INTO patio_melba.streeplijst (id, user_id,added_by, amount, date_added)
                                               VALUES (NULL, :userid, :userid, :amount, CURRENT_TIMESTAMP)");
                 $statement->bindParam(':userid', $userID);
                 $statement->bindParam(':amount', $amount);
@@ -153,7 +153,7 @@ class DatabaseHandler
             try {
                 $this->DBH->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
                 //TODO: fix date time converter check.
-                $statement = $this->DBH->prepare("SELECT * FROM patio_melba.streeplijst WHERE date > '".$fromDate."'");
+                $statement = $this->DBH->prepare("SELECT * FROM patio_melba.streeplijst WHERE date_added > '".$fromDate."'");
                 $statement->setFetchMode(PDO::FETCH_ASSOC);
                 $statement->execute();
                 if ($statement->rowCount() > 0) {

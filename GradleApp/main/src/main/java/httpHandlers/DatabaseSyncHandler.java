@@ -1,11 +1,16 @@
 package httpHandlers;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
 import com.melbasolutions.melbapp.main.R;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import sqlite.DatabaseHelper;
+import sqlite.StreepjesReaderContract;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -21,7 +26,6 @@ import java.util.Date;
 public class DatabaseSyncHandler extends BasicHttpHandler {
 
     DatabaseHelper db;
-    Date lastUpdatedOn;
     SharedPreferences prefs;
 
     public DatabaseSyncHandler(Activity parent, DatabaseHelper db) {
@@ -49,6 +53,12 @@ public class DatabaseSyncHandler extends BasicHttpHandler {
             Log.i("Boris:", url.toString());
             super.doInBackground(url);
 
+
+            //Early return to prevent calls to to null input stream.
+            if (in == null) {
+                return "No input stream available.";
+            }
+
             String line;
             sb = new StringBuilder();
             while ((line = in.readLine()) != null) {
@@ -62,11 +72,26 @@ public class DatabaseSyncHandler extends BasicHttpHandler {
             Log.i("Boris:", dateString);
             prefs.edit().putString(parent.getString(R.string.pref_last_updated), dateString).apply();
 
+            JSONArray json = new JSONArray(sb.toString());
+
+            for (int i = 0; i < json.length(); i++) {
+                JSONObject item = json.getJSONObject(i);
+                ContentValues content = new ContentValues();
+                content.put(StreepjesReaderContract.StreepEntry.COLUMN_NAME_USERID, item.getInt(StreepjesReaderContract.StreepEntry.COLUMN_NAME_ADDEDBY));
+                content.put(StreepjesReaderContract.StreepEntry.COLUMN_NAME_AMOUNT, item.getInt(StreepjesReaderContract.StreepEntry.COLUMN_NAME_AMOUNT));
+                content.put(StreepjesReaderContract.StreepEntry.COLUMN_NAME_DATEADDED, item.getString(StreepjesReaderContract.StreepEntry.COLUMN_NAME_DATEADDED));
+                content.put(StreepjesReaderContract.StreepEntry.COLUMN_NAME_ADDEDBY, item.getInt(StreepjesReaderContract.StreepEntry.COLUMN_NAME_ADDEDBY));
+
+                db.put(content);
+            }
+
             return sb.toString();
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (JSONException e) {
             e.printStackTrace();
         }
         return "";

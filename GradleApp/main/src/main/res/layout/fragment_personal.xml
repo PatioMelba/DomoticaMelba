@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
              android:orientation="vertical"
              android:layout_width="match_parent"
-             android:layout_height="wrap_content">
+             android:layout_height="wrap_content"
+    >
     <LinearLayout android:layout_width="match_parent"
                   android:layout_height="731dp"
                   android:layout_gravity="top"
                   android:paddingLeft="24dp"
                   android:paddingRight="24dp"
-                  android:orientation="vertical">
+                  android:orientation="vertical"
+                  android:nestedScrollingEnabled="false">
         <TextView
                 android:layout_width="match_parent" android:layout_height="wrap_content"
                 android:text="@string/personal_title_1"
@@ -59,7 +61,7 @@
                     android:id="@+id/personal_stats_1" />
             <TextView
                     android:layout_width="fill_parent" android:layout_height="wrap_content"
-                    android:text="32"
+                    android:text="0"
                     android:textColor="@color/MainColor"
                     android:fontFamily="sans-serif"
                     android:textSize="18dp"
@@ -81,7 +83,7 @@
                     android:id="@+id/personal_stats_2" />
             <TextView
                     android:layout_width="fill_parent" android:layout_height="wrap_content"
-                    android:text="213"
+                    android:text="0"
                     android:textColor="@color/MainColor"
                     android:fontFamily="sans-serif"
                     android:textSize="18dp"
@@ -102,7 +104,7 @@
                     android:id="@+id/personal_stats_3" />
             <TextView
                     android:layout_width="fill_parent" android:layout_height="wrap_content"
-                    android:text="€ 0,56"
+                    android:text="0"
                     android:textColor="@color/MainColor"
                     android:fontFamily="sans-serif"
                     android:textSize="18dp"
@@ -123,7 +125,7 @@
                     android:id="@+id/text_beer_in_money" />
             <TextView
                     android:layout_width="fill_parent" android:layout_height="wrap_content"
-                    android:text="€ 76,72"
+                    android:text="0"
                     android:textColor="@color/MainColor"
                     android:fontFamily="sans-serif"
                     android:textSize="18dp"
@@ -204,4 +206,4 @@
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-</FrameLayout>
+</ScrollView>

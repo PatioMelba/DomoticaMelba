@@ -57,9 +57,9 @@ public class LoginActivity extends Activity {
                 }
             }
         });
-
-
     }
+
+
 
     //call back for asynctask to log user in.
     public void logIn(int userId) {

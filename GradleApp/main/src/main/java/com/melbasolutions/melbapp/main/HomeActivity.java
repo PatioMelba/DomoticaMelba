@@ -1,24 +1,20 @@
 package com.melbasolutions.melbapp.main;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.*;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.widget.TextView;
-import httpHandlers.HttpRequestHandler;
+import httpHandlers.BasicHttpHandler;
+import httpHandlers.DatabaseSyncHandler;
 import httpHandlers.StatsHandler;
 import org.json.JSONException;
 import org.json.JSONObject;
 import sqlite.DatabaseHelper;
-import sqlite.StreepjesReaderContract;
 
 
 import java.io.*;
@@ -64,15 +60,11 @@ public class HomeActivity extends AppCompatActivity {
 
         //Get the local SQLite Database.
         databaseHelper = new DatabaseHelper(getBaseContext());
-        SQLiteDatabase db = databaseHelper.getWritableDatabase();
+        //SQLiteDatabase db = databaseHelper.getWritableDatabase();
         Log.i("boris:",databaseHelper.parseCreateString());
+        DatabaseSyncHandler syncer = new DatabaseSyncHandler(this, databaseHelper);
+        syncer.execute();
 
-        ContentValues values = new ContentValues();
-        values.put(StreepjesReaderContract.StreepEntry.COLUMN_NAME_USERID, userId);
-        values.put(StreepjesReaderContract.StreepEntry.COLUMN_NAME_ADDEDBY, userId);
-        values.put(StreepjesReaderContract.StreepEntry.COLUMN_NAME_AMOUNT, 1);
-
-        db.insert(StreepjesReaderContract.StreepEntry.TABLE_NAME_STREEPJES, StreepjesReaderContract.StreepEntry.COLUMN_NAME_USERID, values);
 
         //Do all the stuff for getting the stats from the database.
         try {
@@ -86,12 +78,37 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void addStreepje() throws IOException {
+        //TODO: Make sure the server and the local db don't get out of sync.
         URL url = new URL(getString(R.string.webservice_location) + "?do=addStreepje&user=" + userId + "&amount=1");
-        new HttpRequestHandler(this, Enums.CommandTypes.STREEP).execute(url);
+        Log.i("Boris:", url.toString());
+        new BasicHttpHandler(this, "Slaafjes strepen nu je biertje.").execute(url);
+
+        //Get the local SQLite Database.
+        DatabaseHelper databaseHelper = new DatabaseHelper(getBaseContext());
+        databaseHelper.streepFor(userId);
+        Log.i("boris:",databaseHelper.parseCreateString());
+
+        //Only visually update the textviews.
+        updateStats();
+    }
+
+    public void addStreepje(int user) throws IOException {
+        //TODO: Make sure the server and the local db don't get out of sync.
+        URL url = new URL(getString(R.string.webservice_location) + "?do=addStreepje&user=" + user + "&amount=1");
+        Log.i("Boris:", url.toString());
+        new BasicHttpHandler(this, "Slaafjes strepen nu je biertje.").execute(url);
+
+        //Get the local SQLite Database.
+        DatabaseHelper databaseHelper = new DatabaseHelper(getBaseContext());
+        databaseHelper.streepFor(userId);
+        Log.i("boris:",databaseHelper.parseCreateString());
+
+        //Only visually update the textviews.
+        updateEveryoneStats();
     }
 
     public void updateStats(){
-        double pricePerBeer = Double.parseDouble("" + ((TextView) findViewById(R.id.stats_global_price_per_beer)).getText());
+        double pricePerBeer = Double.parseDouble("" + ((TextView) findViewById(R.id.stats_everyone_beer_price)).getText());
         int amount = Integer.parseInt("" + ((TextView) findViewById(R.id.stats_personal_beer_week)).getText());
         int total = Integer.parseInt("" + ((TextView) findViewById(R.id.stats_personal_beer_total)).getText());
         double userBeerPrice = amount * pricePerBeer;
@@ -101,6 +118,15 @@ public class HomeActivity extends AppCompatActivity {
         ((TextView) findViewById(R.id.stats_personal_beer_week)).setText("" + amount);
         ((TextView) findViewById(R.id.stats_personal_beer_cost_total)).setText(String.format("%.2f",userBeerPrice));
         ((TextView) findViewById(R.id.stats_personal_beer_total)).setText("" + total);
+    }
+
+    public void updateEveryoneStats(){
+        double pricePerBeer = Double.parseDouble("" + ((TextView) findViewById(R.id.stats_everyone_beer_price)).getText());
+        int amount = Integer.parseInt("" + ((TextView) findViewById(R.id.stats_everyone_total_beer)).getText());
+        amount = amount + 1;
+        ((TextView) findViewById(R.id.stats_personal_beer_total)).setText("" + amount);
+        ((TextView) findViewById(R.id.stats_everyone_total_beer)).setText("" + amount);
+        ((TextView) findViewById(R.id.stats_everyone_beer_price)).setText(String.format("%.2f",pricePerBeer));
     }
 
     public void updateTextViews(JSONObject json) {
@@ -117,7 +143,6 @@ public class HomeActivity extends AppCompatActivity {
 
             ((TextView) findViewById(R.id.stats_everyone_beer_price)).setText(String.format("%.2f",pricePerBeer));
             ((TextView) findViewById(R.id.stats_everyone_total_beer)).setText(json.getString("totalbeercount"));
-
 
             ((TextView) findViewById(R.id.button_personal_stripe)).setText("Streep 1 bier voor " + json.getString("name"));
         } catch (JSONException e) {

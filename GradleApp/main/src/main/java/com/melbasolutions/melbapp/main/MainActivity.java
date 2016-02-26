@@ -30,14 +30,6 @@ public class MainActivity extends Activity {
 
         boolean loggedInBefore = prefs.getBoolean(getString(R.string.pref_logged_in_before), false);
 
-
-        //Get the local SQLite Database.
-        DatabaseHelper databaseHelper = new DatabaseHelper(getBaseContext());
-        //SQLiteDatabase db = databaseHelper.getWritableDatabase();
-        Log.i("boris:",databaseHelper.parseCreateString());
-        DatabaseSyncHandler syncer = new DatabaseSyncHandler(this, databaseHelper);
-        syncer.execute();
-
         if (loggedInBefore) {
             //show home activity.
             Intent intent = new Intent(this, HomeActivity.class);

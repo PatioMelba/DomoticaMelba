@@ -28,7 +28,9 @@ public class LoginHandler extends BasicHttpHandler {
     protected String doInBackground(URL... params) {
         super.doInBackground(params);
         try {
-            message = in.readLine();
+            if (in != null) {
+                message = in.readLine();
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -54,6 +56,8 @@ public class LoginHandler extends BasicHttpHandler {
             } else {
                 Toast.makeText(context, "Invalid Login", Toast.LENGTH_LONG).show();
             }
+        } else {
+            Toast.makeText(context, "No server response.", Toast.LENGTH_LONG).show();
         }
         //closes Progress dialog.
         super.onPostExecute(s);

@@ -47,6 +47,13 @@ public class BasicHttpHandler extends AsyncTask<URL, Void, String> {
         pd = new ProgressDialog(parent);
     }
 
+    public BasicHttpHandler(Activity parent, String message) {
+        this.parent = parent;
+        this.context = parent.getApplicationContext();
+        pd = new ProgressDialog(parent);
+        pd.setMessage(message);
+    }
+
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
@@ -58,9 +65,13 @@ public class BasicHttpHandler extends AsyncTask<URL, Void, String> {
         try {
             url = params[0];
             httpURLConnection = (HttpURLConnection) url.openConnection();
+            httpURLConnection.setReadTimeout(30000);
+            httpURLConnection.setConnectTimeout(30000);
             httpURLConnection.setDoOutput(true);
+            httpURLConnection.setDoInput(true);
             httpURLConnection.setChunkedStreamingMode(0);
             httpURLConnection.setRequestMethod("GET");
+
             OutputStreamWriter out = new OutputStreamWriter(httpURLConnection.getOutputStream());
             out.write("");
             out.flush();
@@ -74,6 +85,12 @@ public class BasicHttpHandler extends AsyncTask<URL, Void, String> {
             e1.printStackTrace();
         } catch (IOException e1) {
             e1.printStackTrace();
+        }
+
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
         //TODO: do something with this if desired.
         return "";
